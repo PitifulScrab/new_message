@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<script>
+var xmlHttp=createXmlHttpObject();
+function createXmlHttpObject(){
+ if(window.XMLHttpRequest){
+    xmlHttp=new XMLHttpRequest();
+ }else{
+    xmlHttp=new ActiveXObject('Microsoft.XMLHTTP');
+ }
+ return xmlHttp;
+}
+  
+
+function process(){  
+   xmlHttp.open('PUT','xml29',true);   
+   xmlHttp.onreadystatechange=handleServerResponse;
+   xmlHttp.send(null);  
+}
+function handleServerResponse(){
+ if(xmlHttp.readyState==4 && xmlHttp.status==200){
+   xmlResponse=xmlHttp.responseXML;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q1');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q1').value=message;
+   
+   xmldoc = xmlResponse.getElementsByTagName('q2');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q2').value=message;
+        
+   xmldoc = xmlResponse.getElementsByTagName('q3');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q3').value=message;
+   
+   
+   xmldoc = xmlResponse.getElementsByTagName('q4');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q4').value=message;
+   
+    xmldoc = xmlResponse.getElementsByTagName('q5');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q5').value = message;
+
+   xmldoc = xmlResponse.getElementsByTagName('q6');
+   message = xmldoc[0].firstChild.nodeValue;
+   document.getElementById('Q6').value = message;
+   
+        
+ 
+  }
+}
+
+
+ </script>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Дополнительные настройки</title>
+    <BODY onLoad="process();">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Главная</a></li>
+            <li><a href="/8.htm">Экраны</a></li>
+            <li><a href="/34.htm">Instagram</a></li>
+            <li><a href="/35.htm">YouTube</a></li>
+           
+        </ul>
+        <h3 class="text-muted">ESP8266</h3>
+      </div>
+
+        <div class="alert alert-info" role="alert">Необходимые файлы можно скачать с github <a href="https://github.com/yuri-afanasiev/esp8266-instagram-data/tree/master/server">тут</a>,<a href="https://github.com/yuri-afanasiev/esp8266-youtube-api/tree/master/server">тут</a> и <a href="https://github.com/yuri-afanasiev/esp8266-vk-api/tree/master/server">тут</a></div>
+      
+        <div class="jumbotron">
+        <h2>Дополнительные настройки</h2>
+        <p class="lead">&nbsp;</p> 
+        <form action="api29" method="get" name="user"> 
+
+           
+
+            <div class="input-group">
+                <span class="input-group-addon">Cервер </span>
+                <input type="text" name="zz1" id="Q1" class="form-control" placeholder="" />
+            </div>
+        <div class="input-group">
+        <span class="input-group-addon">путь к файлу для instagram</span>
+        <input type="text" name="zz2" id="Q2" class="form-control" placeholder="" />
+        </div>
+        <div class="input-group">
+        <span class="input-group-addon">путь к statistics.php для youtube</span>
+        <input type="text" name="zz3" id="Q3"class="form-control" placeholder="" />
+        </div>
+        <div class="input-group">
+        <span class="input-group-addon">путь к channels.php для youtube</span>
+        <input type="text" name="zz4" id="Q4"class="form-control" placeholder="" />
+        </div> 
+        <div class="input-group">
+        <span class="input-group-addon">путь к channels_id.php для youtube</span>
+        <input type="text" name="zz5" id="Q5" class="form-control" placeholder="" />
+        </div> 
+            <div class="input-group">
+                <span class="input-group-addon">путь к vk.php для vk</span>
+                <input type="text" name="zz6" id="Q6" class="form-control" placeholder="" />
+            </div> 
+        <p> </p>
+        
+        
+       <input name="Отправить" type="submit" class="btn btn-default"   value="Сохранить" />
+       </form>
+       
+                       
+      </div>
+      <div class="row marketing"></div>
+
+      <div class="footer">
+        <p> Система на Bootstrap</p>
+      </div>
+
+    </div>  
+</body></html>
